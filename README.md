@@ -1,5 +1,3 @@
----
-
 # 🚀 AI Photo Transformer
 
 AI Photo Transformer là một nền tảng web mạnh mẽ cho phép người dùng biến đổi ảnh của họ bằng các công nghệ AI tiên tiến. Từ việc khôi phục những kỷ niệm cũ đến việc tạo ra những tác phẩm nghệ thuật độc đáo theo phong cách anime hay cyberpunk, ứng dụng này mang đến một trải nghiệm sáng tạo và đầy cảm hứng.
@@ -185,5 +183,3 @@ Dự án được tổ chức một cách logic để dễ dàng phát triển v
 5.  **Truy cập ứng dụng:**
 
     Mở trình duyệt của bạn và truy cập vào `http://localhost:3000`.
-
----
