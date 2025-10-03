@@ -1,6 +1,6 @@
-# 🚀 AI Photo Transformer
+# ⚡ APT Magic - AI Photo Transformer
 
-AI Photo Transformer là một nền tảng web mạnh mẽ cho phép người dùng biến đổi ảnh của họ bằng các công nghệ AI tiên tiến. Từ việc khôi phục những kỷ niệm cũ đến việc tạo ra những tác phẩm nghệ thuật độc đáo theo phong cách anime hay cyberpunk, ứng dụng này mang đến một trải nghiệm sáng tạo và đầy cảm hứng.
+APT Magic là một nền tảng web mạnh mẽ với thiết kế ultra-cold theme, cho phép người dùng biến đổi ảnh của họ bằng các công nghệ AI tiên tiến. Từ việc khôi phục những kỷ niệm cũ đến việc tạo ra những tác phẩm nghệ thuật độc đáo theo phong cách anime hay cyberpunk, ứng dụng này mang đến một trải nghiệm sáng tạo và đầy cảm hứng với giao diện lạnh lùng, chuyên nghiệp.
 
 ## ✨ Tính năng nổi bật
 
@@ -9,6 +9,8 @@ AI Photo Transformer là một nền tảng web mạnh mẽ cho phép người d
     *   **Anime hóa:** Biến ảnh của bạn thành phong cách nghệ thuật anime.
     *   **Cyberpunk hóa:** Thêm hiệu ứng tương lai và neon rực rỡ vào ảnh.
     *   Và nhiều tính năng biến đổi khác sẽ được bổ sung!
+*   **Ultra-Cold Theme:** Giao diện monochrome (đen/trắng/xám) với hiệu ứng glow và shimmer.
+*   **3D Particle Background:** Hệ thống particle 3D sử dụng OGL với 200 particles tương tác.
 *   **Trải nghiệm người dùng trực quan:** Giao diện kéo thả dễ sử dụng, thanh trượt so sánh ảnh "trước và sau".
 *   **Thư viện cá nhân:** Lưu trữ và quản lý tất cả các dự án biến đổi ảnh của bạn.
 *   **Cộng đồng năng động:** Chia sẻ tác phẩm của bạn với cộng đồng, khám phá và tương tác với các biến đổi của người khác.
@@ -20,7 +22,7 @@ AI Photo Transformer là một nền tảng web mạnh mẽ cho phép người d
     <!-- IMAGE_HERE_1: Ảnh trang chủ nếu có -->
 
 *   **Thanh điều hướng (Navbar):**
-    Thanh điều hướng đơn giản và rõ ràng, tập trung vào tính năng "Create" để khởi đầu hành trình biến đổi ảnh của bạn.
+    Thanh điều hướng với logo APT Magic (flash icon) và ultra-cold theme, tập trung vào tính năng "Create" để khởi đầu hành trình biến đổi ảnh của bạn.
     <!-- IMAGE_HERE_2: Ảnh Navbar -->
 
 *   **Trang tạo ảnh (Create):**
@@ -74,11 +76,11 @@ Dự án được tổ chức một cách logic để dễ dàng phát triển v
       /ProfileCard.tsx        # Hiển thị thông tin người dùng
       /ChangePasswordForm.tsx # Form đổi mật khẩu
     /Common                   # Components chung cho toàn bộ ứng dụng
-      /Navbar.tsx             # Thanh điều hướng trên cùng
-      /Footer.tsx             # Chân trang
-      /LoadingSpinner.tsx     # Icon tải
-      /Button.tsx             # Nút nhấn dùng chung
-      /Modal.tsx              # Hộp thoại modal
+      /Navbar.tsx             # Thanh điều hướng với APT Magic logo
+      /Footer.tsx             # Chân trang với team branding
+      /LoadingSpinner.tsx     # Icon tải với ultra-cold theme
+      /Background.tsx         # 3D particle background system
+      /SpotlightCard.tsx      # Interactive card với spotlight effect
     /Community                # Components cho tính năng cộng đồng
       /CommunityFeed.tsx      # Container cho newfeed
       /PostCard.tsx           # Hiển thị một bài đăng (kèm tags)
@@ -97,6 +99,9 @@ Dự án được tổ chức một cách logic để dễ dàng phát triển v
       /Cyberpunk              # Controls riêng cho Cyberpunk hóa
         /CyberpunkControls.tsx
     /UI                       # Các component UI nhỏ, chung
+      /Button.tsx             # Nút nhấn với ultra-cold styling
+      /Particles.tsx          # 3D particle system (OGL-based)
+      /Modal.tsx              # Hộp thoại modal
   /lib                        # Các tiện ích và hàm helper
     /auth.ts                  # Hàm hỗ trợ xác thực
     /aws.ts                   # Hàm hỗ trợ AWS (S3, Cognito)
@@ -119,6 +124,7 @@ Dự án được tổ chức một cách logic để dễ dàng phát triển v
 *   Tài khoản AWS (cho S3 và Cognito)
 *   Google Cloud Project (cho Google Auth)
 *   Dịch vụ/API xử lý ảnh AI (có thể là của bên thứ 3 hoặc tự triển khai)
+*   OGL library (cho 3D particle system)
 
 ### Các bước
 
@@ -126,7 +132,7 @@ Dự án được tổ chức một cách logic để dễ dàng phát triển v
 
     ```bash
     git clone [URL_CỦA_REPOSITORY_CỦA_BẠN]
-    cd AI-Photo-Transformer
+    cd photo-genAI-ui
     ```
 
 2.  **Cài đặt các dependency:**
