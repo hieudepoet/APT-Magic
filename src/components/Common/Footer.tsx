@@ -134,7 +134,7 @@ export default function Footer() {
         <div className="border-t border-white/10 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-500 text-sm">
-              <p>&copy; 2025 AI Photo Transformer by <span className="text-white font-semibold">AIVanguard Team</span>. All rights reserved.</p>
+              <p>&copy; 2025 APT Magic by <span className="text-white font-semibold">AIVanguard Team</span>. All rights reserved.</p>
             </div>
             <div className="flex items-center space-x-6 text-sm text-gray-500">
               <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
