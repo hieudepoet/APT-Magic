@@ -1,5 +1,5 @@
 {
-  "name": "photo-recovery-ui",
+  "name": "photo-genai-ui",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "next": "15.5.4",
+    "@aws-amplify/ui-react": "^6.13.0",
+    "aws-amplify": "^6.15.7",
+    "next": "^15.5.4",
     "ogl": "^1.0.11",
     "react": "19.1.0",
     "react-dom": "19.1.0"
