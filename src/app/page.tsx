@@ -19,12 +19,12 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/create">
-                <Button size="lg" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto hover:cursor-pointer">
                   Start Creating
                 </Button>
               </Link>
               <Link href="/community">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto hover:cursor-pointer">
                   Explore Gallery
                 </Button>
               </Link>
@@ -45,7 +45,8 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/*line 1*/}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {/* Restore Feature */}
             <SpotlightCard className="custom-spotlight-card text-center hover:cursor-pointer" spotlightColor="rgba(255, 255, 255, 0.67)">
               <div className="w-16 h-16 border-2 border-gray-600 bg-black/40 backdrop-blur-sm mx-auto mb-4 flex items-center justify-center sharp-border hover:border-white hover:glow-white transition-all duration-300">
@@ -58,10 +59,10 @@ export default function Home() {
             </SpotlightCard>
 
             {/* Anime Feature */}
-            <SpotlightCard className="custom-spotlight-card text-center" spotlightColor="rgba(255, 255, 255, 0.67)">
+            <SpotlightCard className="custom-spotlight-card text-center hover:cursor-pointer" spotlightColor="rgba(255, 255, 255, 0.67)">
               <div className="w-16 h-16 border-2 border-gray-600 bg-black/40 backdrop-blur-sm mx-auto mb-4 flex items-center justify-center sharp-border hover:border-white hover:glow-white transition-all duration-300">
                 <svg className="w-8 h-8 text-gray-400 hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-white mb-2">Anime Style</h3>
@@ -69,7 +70,7 @@ export default function Home() {
             </SpotlightCard>
 
             {/* Cyberpunk Feature */}
-            <SpotlightCard className="custom-spotlight-card text-center" spotlightColor="rgba(255, 255, 255, 0.67)">
+            <SpotlightCard className="custom-spotlight-card text-center hover:cursor-pointer" spotlightColor="rgba(255, 255, 255, 0.67)">
               <div className="w-16 h-16 border-2 border-gray-600 bg-black/40 backdrop-blur-sm mx-auto mb-4 flex items-center justify-center sharp-border hover:border-white hover:glow-white transition-all duration-300">
                 <svg className="w-8 h-8 text-gray-400 hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -77,6 +78,42 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-white mb-2">Cyberpunk Style</h3>
               <p className="text-gray-500">Add futuristic neon effects and cyberpunk aesthetics</p>
+            </SpotlightCard>
+          </div>
+
+          {/*line 2*/}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Viral Prompt Feature */}
+            <SpotlightCard className="custom-spotlight-card text-center hover:cursor-pointer" spotlightColor="rgba(255, 255, 255, 0.67)">
+              <div className="w-16 h-16 border-2 border-gray-600 bg-black/40 backdrop-blur-sm mx-auto mb-4 flex items-center justify-center sharp-border hover:border-white hover:glow-white transition-all duration-300">
+                <svg className="w-8 h-8 text-gray-400 hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Viral Prompt</h3>
+              <p className="text-gray-500">Hot trend AI transformations with prompts shared widely on Facebook, TikTok</p>
+            </SpotlightCard>
+
+            {/* ID Photo Feature */}
+            <SpotlightCard className="custom-spotlight-card text-center hover:cursor-pointer" spotlightColor="rgba(255, 255, 255, 0.67)">
+              <div className="w-16 h-16 border-2 border-gray-600 bg-black/40 backdrop-blur-sm mx-auto mb-4 flex items-center justify-center sharp-border hover:border-white hover:glow-white transition-all duration-300">
+                <svg className="w-8 h-8 text-gray-400 hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">ID Photo</h3>
+              <p className="text-gray-500">Generate professional ID photos with perfect background and lighting</p>
+            </SpotlightCard>
+
+            {/* Ultra HD Feature */}
+            <SpotlightCard className="custom-spotlight-card text-center hover:cursor-pointer" spotlightColor="rgba(255, 255, 255, 0.67)">
+              <div className="w-16 h-16 border-2 border-gray-600 bg-black/40 backdrop-blur-sm mx-auto mb-4 flex items-center justify-center sharp-border hover:border-white hover:glow-white transition-all duration-300">
+                <div className="text-gray-400 hover:text-white transition-colors font-bold text-2xl">
+                  4K
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Ultra HD</h3>
+              <p className="text-gray-500">Enhance image resolution to ultra-high definition with AI upscaling</p>
             </SpotlightCard>
           </div>
         </div>
