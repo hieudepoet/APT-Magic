@@ -19,6 +19,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "APT Magic - Photo Transformer with AI Magic",
   description: "Transform your photos with cutting-edge AI technology",
+  icons: {
+    icon: "/flash-svgrepo-com.svg",
+    shortcut: "/flash-svgrepo-com.svg",
+    apple: "/flash-svgrepo-com.svg",
+  },
 };
 
 export default function RootLayout({
