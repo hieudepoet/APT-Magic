@@ -125,7 +125,8 @@ export default function PostCard({ post }: PostCardProps) {
                 : 'text-gray-400 hover:text-white hover:bg-white/10'
             }`}
           >
-            <span className="text-lg">👍</span>
+            {/* <span className="text-lg">👍</span> */}
+            <Image src="/heart.png" alt="like" width={20} height={20} />
             <span className="font-medium">{likes}</span>
           </button>
           <button
@@ -136,7 +137,8 @@ export default function PostCard({ post }: PostCardProps) {
                 : 'text-gray-400 hover:text-white hover:bg-white/10'
             }`}
           >
-            <span className="text-lg">👎</span>
+            {/* <span className="text-lg">👎</span> */}
+            <Image src="/heartbreak.png" alt="dislike" width={23} height={23} />
             <span className="font-medium">{dislikes}</span>
           </button>
         </div>

@@ -47,7 +47,7 @@ export default function FeedContent({ activeFilter }: FeedContentProps) {
 
   if (activeFilter === 'explore') {
     return (
-      <div className="flex-1 h-full overflow-y-auto p-6">
+      <div className="flex-1 h-full overflow-y-auto [scrollbar-width:none] p-6">
         <ExploreGrid posts={mockPosts} />
       </div>
     );
@@ -55,14 +55,14 @@ export default function FeedContent({ activeFilter }: FeedContentProps) {
 
   if (filteredPosts.length === 0) {
     return (
-      <div className="flex-1 h-full overflow-y-auto p-6">
+      <div className="flex-1 h-full overflow-y-auto [scrollbar-width:none] p-6">
         <EmptyFeed filterType={activeFilter} />
       </div>
     );
   }
 
   return (
-    <div className="flex-1 h-full overflow-y-auto max-w-2xl mx-auto p-6">
+    <div className="flex-1 h-full overflow-y-auto [scrollbar-width:none] max-w-2xl mx-auto p-6">
       <div className="space-y-8">
         {filteredPosts.map((post) => (
           <PostCard key={post.id} post={post} />
