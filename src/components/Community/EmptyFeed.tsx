@@ -72,7 +72,7 @@ const emptyMessages = {
   },
   'ultra-hd': {
     icon: (
-      <div className="text-sm font-bold">4K</div>
+      <div className="text-6xl font-bold">4K</div>
     ),
     title: 'No Ultra HD content yet',
     description: 'Share your high-quality transformations!'
