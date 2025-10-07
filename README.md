@@ -1,6 +1,6 @@
 # ⚡ APT Magic - AI Photo Transformer
 
-APT Magic là một nền tảng web mạnh mẽ với thiết kế ultra-cold theme, cho phép người dùng biến đổi ảnh của họ bằng các công nghệ AI tiên tiến. Từ việc khôi phục những kỷ niệm cũ đến việc tạo ra những tác phẩm nghệ thuật độc đáo theo phong cách anime hay cyberpunk, ứng dụng này mang đến một trải nghiệm sáng tạo và đầy cảm hứng với giao diện lạnh lùng, chuyên nghiệp.
+APT Magic là một nền tảng web sáng tạo, cho phép người dùng biến đổi ảnh của họ bằng các công nghệ AI tiên tiến. Từ việc khôi phục những kỷ niệm cũ đến việc tạo ra những tác phẩm nghệ thuật độc đáo theo phong cách anime hay cyberpunk, ứng dụng này mang đến một trải nghiệm sáng tạo và đầy cảm hứng với giao diện hiện đại, thân thiện với người dùng.
 
 ## ✨ Tính năng đã hoàn thành
 
@@ -8,7 +8,6 @@ APT Magic là một nền tảng web mạnh mẽ với thiết kế ultra-cold t
     *   Đăng ký/đăng nhập với AWS Cognito
     *   Xác thực email tự động
     *   Quản lý phiên đăng nhập bảo mật
-    *   Giao diện tùy chỉnh với ultra-cold theme
 *   **✅ Thư viện cá nhân:**
     *   Hiển thị thống kê người dùng (projects, likes, followers)
     *   Quản lý dự án với tabs (Saved/Posted)
@@ -19,9 +18,7 @@ APT Magic là một nền tảng web mạnh mẽ với thiết kế ultra-cold t
     *   Sidebar lọc theo loại biến đổi
     *   Explore grid với trending posts
     *   Rankings top creators theo likes
-    *   Tương tác like/comment (UI ready)
-*   **✅ Ultra-Cold Theme:** Giao diện monochrome (đen/trắng/xám) với hiệu ứng glow và shimmer.
-*   **✅ 3D Particle Background:** Hệ thống particle 3D sử dụng OGL với 200 particles tương tác.
+    *   Tương tác like (UI ready)
 *   **✅ Backend hoàn chỉnh:** Supabase database + AWS S3 storage + API routes.
 
 ## 🚧 Tính năng đang phát triển
@@ -30,6 +27,9 @@ APT Magic là một nền tảng web mạnh mẽ với thiết kế ultra-cold t
     *   **Phục hồi ảnh cũ/trắng đen:** Khôi phục độ sắc nét, màu sắc và loại bỏ hư tổn.
     *   **Anime hóa:** Biến ảnh của bạn thành phong cách nghệ thuật anime.
     *   **Cyberpunk hóa:** Thêm hiệu ứng tương lai và neon rực rỡ vào ảnh.
+    *   **Gen ảnh theo trend:** Tích hợp sẵn các prompt đang viral trên các nền tảng MXH để biến đổi ảnh của bạn.
+    *   **Gen ảnh thẻ:** Tạo ra ảnh thẻ từ ảnh của bạn.
+    *   **Ulti HD cho ảnh:** Tăng chất lượng cho bức ảnh của bạn.
 *   **🔄 Giao diện biến đổi:** Kéo thả tải ảnh, thanh trượt so sánh "trước và sau".
 *   **🔄 AI Backend:** Tích hợp các mô hình AI cho xử lý ảnh.
 
@@ -128,7 +128,7 @@ Dự án được tổ chức một cách logic để dễ dàng phát triển v
 *   Tài khoản AWS (cho S3 và Cognito)
 *   Tài khoản Supabase (cho database)
 *   OGL library (cho 3D particle system)
-*   Dịch vụ AI xử lý ảnh (đang phát triển)
+*   Modal AI xử lý ảnh (đang phát triển với AWS SageMaker và AWS EC2)
 
 ### Các bước
 
@@ -166,13 +166,13 @@ Dự án được tổ chức một cách logic để dễ dàng phát triển v
     # Supabase Configuration
     NEXT_PUBLIC_SUPABASE_URL="YOUR_SUPABASE_PROJECT_URL"
     NEXT_PUBLIC_SUPABASE_ANON_KEY="YOUR_SUPABASE_ANON_KEY"
-    SUPABASE_SERVICE_ROLE_KEY="YOUR_SERVICE_ROLE_KEY"
+    NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY="YOUR_SERVICE_ROLE_KEY"
 
     # API Key cho dịch vụ AI xử lý ảnh (đang phát triển)
     AI_TRANSFORM_API_KEY="YOUR_AI_API_KEY"
-    AI_TRANSFORM_ENDPOINT_RESTORE="http://localhost:5000/restore"
-    AI_TRANSFORM_ENDPOINT_ANIME="http://localhost:5000/anime"
-    AI_TRANSFORM_ENDPOINT_CYBERPUNK="http://localhost:5000/cyberpunk"
+    AI_TRANSFORM_ENDPOINT_RESTORE="YOUR_AI_API_KEY"
+    AI_TRANSFORM_ENDPOINT_ANIME="YOUR_AI_API_KEY"
+    AI_TRANSFORM_ENDPOINT_CYBERPUNK="YOUR_AI_API_KEY"
     ```
     *Lưu ý:* Thay thế các giá trị `YOUR_...` bằng thông tin thực tế của bạn.
 
