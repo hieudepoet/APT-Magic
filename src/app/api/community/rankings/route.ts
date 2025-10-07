@@ -1,18 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
-interface RankingData {
-  total_likes_received: number;
-  users: {
-    id: string;
-    username: string;
-    avatar_url: string | null;
-  }[];
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type RankingItem = any;
 
 export async function GET(request: NextRequest) {
   try {
-    // Get top users by total likes received
     const { data: rankings, error } = await supabase
       .from('user_stats')
       .select(`
@@ -31,8 +24,9 @@ export async function GET(request: NextRequest) {
     }
 
     // Transform data to match frontend interface
-    const transformedRankings = rankings?.map((item: RankingData, index: number) => {
-      const user = item.users[0];
+    const transformedRankings = rankings?.map((item: RankingItem, index: number) => {
+      const user = item.users?.[0] || item.users;
+      if (!user) return null;
       return {
         id: user.id,
         username: user.username,
@@ -40,7 +34,7 @@ export async function GET(request: NextRequest) {
         totalLikes: item.total_likes_received,
         rank: index + 1
       };
-    }) || [];
+    }).filter(Boolean) || [];
 
     return NextResponse.json({ rankings: transformedRankings });
   } catch (error) {
