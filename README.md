@@ -2,19 +2,36 @@
 
 APT Magic là một nền tảng web mạnh mẽ với thiết kế ultra-cold theme, cho phép người dùng biến đổi ảnh của họ bằng các công nghệ AI tiên tiến. Từ việc khôi phục những kỷ niệm cũ đến việc tạo ra những tác phẩm nghệ thuật độc đáo theo phong cách anime hay cyberpunk, ứng dụng này mang đến một trải nghiệm sáng tạo và đầy cảm hứng với giao diện lạnh lùng, chuyên nghiệp.
 
-## ✨ Tính năng nổi bật
+## ✨ Tính năng đã hoàn thành
 
-*   **Đa dạng tính năng biến đổi:**
+*   **✅ Hệ thống xác thực hoàn chỉnh:**
+    *   Đăng ký/đăng nhập với AWS Cognito
+    *   Xác thực email tự động
+    *   Quản lý phiên đăng nhập bảo mật
+    *   Giao diện tùy chỉnh với ultra-cold theme
+*   **✅ Thư viện cá nhân:**
+    *   Hiển thị thống kê người dùng (projects, likes, followers)
+    *   Quản lý dự án với tabs (Saved/Posted)
+    *   Grid layout responsive kiểu Instagram
+    *   Modal xem chi tiết dự án
+*   **✅ Cộng đồng năng động:**
+    *   Newfeed với bài đăng từ cộng đồng
+    *   Sidebar lọc theo loại biến đổi
+    *   Explore grid với trending posts
+    *   Rankings top creators theo likes
+    *   Tương tác like/comment (UI ready)
+*   **✅ Ultra-Cold Theme:** Giao diện monochrome (đen/trắng/xám) với hiệu ứng glow và shimmer.
+*   **✅ 3D Particle Background:** Hệ thống particle 3D sử dụng OGL với 200 particles tương tác.
+*   **✅ Backend hoàn chỉnh:** Supabase database + AWS S3 storage + API routes.
+
+## 🚧 Tính năng đang phát triển
+
+*   **🔄 Đa dạng tính năng biến đổi:**
     *   **Phục hồi ảnh cũ/trắng đen:** Khôi phục độ sắc nét, màu sắc và loại bỏ hư tổn.
     *   **Anime hóa:** Biến ảnh của bạn thành phong cách nghệ thuật anime.
     *   **Cyberpunk hóa:** Thêm hiệu ứng tương lai và neon rực rỡ vào ảnh.
-    *   Và nhiều tính năng biến đổi khác sẽ được bổ sung!
-*   **Ultra-Cold Theme:** Giao diện monochrome (đen/trắng/xám) với hiệu ứng glow và shimmer.
-*   **3D Particle Background:** Hệ thống particle 3D sử dụng OGL với 200 particles tương tác.
-*   **Trải nghiệm người dùng trực quan:** Giao diện kéo thả dễ sử dụng, thanh trượt so sánh ảnh "trước và sau".
-*   **Thư viện cá nhân:** Lưu trữ và quản lý tất cả các dự án biến đổi ảnh của bạn.
-*   **Cộng đồng năng động:** Chia sẻ tác phẩm của bạn với cộng đồng, khám phá và tương tác với các biến đổi của người khác.
-*   **Xác thực linh hoạt:** Đăng nhập/đăng ký bằng email/mật khẩu, Google Auth, và tích hợp AWS Cognito.
+*   **🔄 Giao diện biến đổi:** Kéo thả tải ảnh, thanh trượt so sánh "trước và sau".
+*   **🔄 AI Backend:** Tích hợp các mô hình AI cho xử lý ảnh.
 
 ## 🖼️ Giao diện người dùng (UI)
 
@@ -46,71 +63,58 @@ APT Magic là một nền tảng web mạnh mẽ với thiết kế ultra-cold t
     <!-- IMAGE_HERE_7: Ảnh LoginForm -->
     <!-- IMAGE_HERE_8: Ảnh ProfileCard -->
 
-## 📁 Cấu trúc File
+## 📁 Cấu trúc File (Đã hoàn thành)
 
 Dự án được tổ chức một cách logic để dễ dàng phát triển và mở rộng.
 
 ```
 /src
-  /app                        # Các trang chính của Next.js (Router)
-    /api                      # Next.js API Routes (Backend logic)
-      /auth                   # Xử lý xác thực người dùng (NextAuth.js)
-        /[...nextauth]        # NextAuth catch-all route
-      /transform              # API chung cho các loại biến đổi ảnh
-        /[type]               # Endpoint động cho từng loại biến đổi (e.g., /api/transform/restore)
-      /community              # API cho các bài đăng cộng đồng
-      /library                # API cho thư viện cá nhân
-    /auth                     # Các trang liên quan đến xác thực (login, signup, profile)
-    /community                # Trang hiển thị newfeed cộng đồng
-    /library                  # Trang thư viện cá nhân
-    /favorites                # Trang các mục yêu thích (sẽ phát triển)
-    /create                   # Trang chính cho việc tạo và biến đổi ảnh
-      /page.tsx               # Trang chọn loại biến đổi (TransformSelector)
-      /[type]/page.tsx        # Trang chi tiết cho từng loại biến đổi (e.g., /create/restore)
-    /layout.tsx               # Layout gốc của ứng dụng Next.js
-    /page.tsx                 # Trang chủ hoặc trang chuyển hướng
-  /components                 # Các React Component tái sử dụng được
-    /Auth                     # Components liên quan đến xác thực
-      /LoginForm.tsx          # Form đăng nhập
-      /SignupForm.tsx         # Form đăng ký
-      /ProfileCard.tsx        # Hiển thị thông tin người dùng
-      /ChangePasswordForm.tsx # Form đổi mật khẩu
-    /Common                   # Components chung cho toàn bộ ứng dụng
-      /Navbar.tsx             # Thanh điều hướng với APT Magic logo
-      /Footer.tsx             # Chân trang với team branding
-      /LoadingSpinner.tsx     # Icon tải với ultra-cold theme
-      /Background.tsx         # 3D particle background system
-      /SpotlightCard.tsx      # Interactive card với spotlight effect
-    /Community                # Components cho tính năng cộng đồng
-      /CommunityFeed.tsx      # Container cho newfeed
-      /PostCard.tsx           # Hiển thị một bài đăng (kèm tags)
-      /CommentSection.tsx     # Khu vực bình luận
-    /Library                  # Components cho thư viện cá nhân
-      /ProjectCard.tsx        # Hiển thị một dự án (kèm loại biến đổi)
-      /ProjectGrid.tsx        # Layout lưới cho các dự án
-    /Create                   # Components cho tính năng tạo/biến đổi ảnh
-      /TransformSelector.tsx  # Lựa chọn loại biến đổi
-      /ImageUploadArea.tsx    # Khu vực tải ảnh
-      /BeforeAfterSlider.tsx  # Thanh trượt so sánh ảnh
-      /Restore                # Controls riêng cho phục hồi ảnh
-        /RestorationControls.tsx
-      /Anime                  # Controls riêng cho Anime hóa
-        /AnimeControls.tsx
-      /Cyberpunk              # Controls riêng cho Cyberpunk hóa
-        /CyberpunkControls.tsx
-    /UI                       # Các component UI nhỏ, chung
-      /Button.tsx             # Nút nhấn với ultra-cold styling
-      /Particles.tsx          # 3D particle system (OGL-based)
-      /Modal.tsx              # Hộp thoại modal
-  /lib                        # Các tiện ích và hàm helper
-    /auth.ts                  # Hàm hỗ trợ xác thực
-    /aws.ts                   # Hàm hỗ trợ AWS (S3, Cognito)
-    /utils.ts                 # Các tiện ích chung
-    /transformTypes.ts        # Định nghĩa các loại biến đổi ảnh
-  /styles                     # Các file CSS
-    /globals.css              # Global CSS (TailwindCSS)
-  /types                      # Định nghĩa các kiểu TypeScript
-    /index.ts                 # Các interface/type chung
+  /app                        # ✅ Các trang chính của Next.js (Router)
+    /api                      # ✅ Next.js API Routes (Backend logic)
+      /users                  # ✅ API quản lý người dùng
+        /sync/route.ts        # ✅ Đồng bộ Cognito ↔ Supabase
+        /create/route.ts      # ✅ Tạo user sau confirmation
+        /projects/route.ts    # ✅ CRUD operations cho projects
+      /community              # ✅ API cho cộng đồng
+        /posts/route.ts       # ✅ Lấy bài đăng với filtering
+        /rankings/route.ts    # ✅ Top creators rankings
+    /auth                     # ✅ Trang xác thực tùy chỉnh
+    /community                # ✅ Trang newfeed cộng đồng
+    /library                  # ✅ Trang thư viện cá nhân
+    /create                   # 🔄 Trang tạo và biến đổi ảnh (đang phát triển)
+    /layout.tsx               # ✅ Layout gốc với AuthProvider
+    /page.tsx                 # ✅ Trang chủ với 6 features
+  /components                 # ✅ React Components hoàn chỉnh
+    /Common                   # ✅ Components chung
+      /Navbar.tsx             # ✅ Navigation với auth state
+      /Footer.tsx             # ✅ Footer với team branding
+      /Background.tsx         # ✅ 3D particle system
+      /UserMenu.tsx           # ✅ Dropdown menu với glassmorphism
+    /Community                # ✅ Components cộng đồng
+      /CommunityFeed.tsx      # ✅ Main feed container
+      /PostCard.tsx           # ✅ Bài đăng với interactions
+      /ExploreGrid.tsx        # ✅ Trending posts grid
+      /RankingSidebar.tsx     # ✅ Top creators rankings
+    /Library                  # ✅ Components thư viện
+      /LibraryProfile.tsx     # ✅ User profile với stats
+      /ProjectGrid.tsx        # ✅ Projects grid layout
+      /ProjectModal.tsx       # ✅ Chi tiết project modal
+    /UI                       # ✅ UI components
+      /Button.tsx             # ✅ Styled buttons
+      /Particles.tsx          # ✅ 3D particle system
+      /CustomAuthForm.tsx     # ✅ Custom Cognito auth form
+  /hooks                      # ✅ Custom React hooks
+    /useAuth.ts               # ✅ Authentication với Supabase bridge
+    /useProjects.ts           # ✅ Projects data management
+    /useCommunityPosts.ts     # ✅ Community posts fetching
+    /useRankings.ts           # ✅ Rankings data fetching
+  /lib                        # ✅ Utility functions
+    /supabase.ts              # ✅ Supabase client
+    /supabase-auth.ts         # ✅ Auth bridge functions
+    /s3.ts                    # ✅ AWS S3 utilities
+    /utils.ts                 # ✅ Common utilities
+  /styles                     # ✅ Styling
+    /globals.css              # ✅ Ultra-cold theme với TailwindCSS
 ```
 
 ## 🛠️ Cách khởi chạy Local
@@ -122,9 +126,9 @@ Dự án được tổ chức một cách logic để dễ dàng phát triển v
 *   Node.js (phiên bản 18 trở lên)
 *   npm hoặc Yarn
 *   Tài khoản AWS (cho S3 và Cognito)
-*   Google Cloud Project (cho Google Auth)
-*   Dịch vụ/API xử lý ảnh AI (có thể là của bên thứ 3 hoặc tự triển khai)
+*   Tài khoản Supabase (cho database)
 *   OGL library (cho 3D particle system)
+*   Dịch vụ AI xử lý ảnh (đang phát triển)
 
 ### Các bước
 
@@ -148,29 +152,23 @@ Dự án được tổ chức một cách logic để dễ dàng phát triển v
     Tạo một file `.env.local` ở thư mục gốc của dự án và điền các biến môi trường cần thiết. Dưới đây là ví dụ về các biến bạn có thể cần:
 
     ```env
-    # NextAuth.js
-    NEXTAUTH_URL="http://localhost:3000"
-    NEXTAUTH_SECRET="MỘT_CHUỖI_NGẪU_NHIÊN_PHỨC_TẠP_CHO_SECRET" # Sử dụng `openssl rand -base64 32` để tạo
-
-    # Google Provider
-    GOOGLE_CLIENT_ID="YOUR_GOOGLE_CLIENT_ID"
-    GOOGLE_CLIENT_SECRET="YOUR_GOOGLE_CLIENT_SECRET"
-
-    # AWS Cognito (Nếu sử dụng)
-    COGNITO_CLIENT_ID="YOUR_COGNITO_CLIENT_ID"
-    COGNITO_CLIENT_SECRET="YOUR_COGNITO_CLIENT_SECRET"
-    COGNITO_ISSUER="https://cognito-idp.YOUR_REGION.amazonaws.com/YOUR_USER_POOL_ID"
+    # AWS Amplify Configuration
+    NEXT_PUBLIC_AWS_REGION="ap-southeast-2"
+    NEXT_PUBLIC_AWS_USER_POOL_ID="YOUR_USER_POOL_ID"
+    NEXT_PUBLIC_AWS_USER_POOL_WEB_CLIENT_ID="YOUR_CLIENT_ID"
 
     # AWS S3 (Để lưu trữ ảnh)
     AWS_ACCESS_KEY_ID="YOUR_AWS_ACCESS_KEY_ID"
     AWS_SECRET_ACCESS_KEY="YOUR_AWS_SECRET_ACCESS_KEY"
-    AWS_REGION="YOUR_AWS_REGION"
+    AWS_REGION="ap-southeast-2"
     AWS_S3_BUCKET_NAME="YOUR_S3_BUCKET_NAME"
 
-    # Database (Ví dụ: PostgreSQL)
-    DATABASE_URL="postgresql://user:password@host:port/database"
+    # Supabase Configuration
+    NEXT_PUBLIC_SUPABASE_URL="YOUR_SUPABASE_PROJECT_URL"
+    NEXT_PUBLIC_SUPABASE_ANON_KEY="YOUR_SUPABASE_ANON_KEY"
+    SUPABASE_SERVICE_ROLE_KEY="YOUR_SERVICE_ROLE_KEY"
 
-    # API Key cho dịch vụ AI xử lý ảnh (nếu có)
+    # API Key cho dịch vụ AI xử lý ảnh (đang phát triển)
     AI_TRANSFORM_API_KEY="YOUR_AI_API_KEY"
     AI_TRANSFORM_ENDPOINT_RESTORE="http://localhost:5000/restore"
     AI_TRANSFORM_ENDPOINT_ANIME="http://localhost:5000/anime"
