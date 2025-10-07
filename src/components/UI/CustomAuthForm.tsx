@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { signIn, signUp, confirmSignUp, getCurrentUser } from 'aws-amplify/auth'
 import { useRouter } from 'next/navigation'
+import { useUserCreation } from '@/hooks/useUserCreation'
 import Button from '@/components/UI/Button'
 
 type AuthMode = 'signIn' | 'signUp' | 'confirmSignUp'
@@ -17,6 +18,7 @@ interface FormData {
 
 export default function CustomAuthForm() {
   const router = useRouter()
+  const { createUser } = useUserCreation()
   const [mode, setMode] = useState<AuthMode>('signIn')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -38,12 +40,17 @@ export default function CustomAuthForm() {
       setLoading(true)
       setError('')
       
-      await signIn({
+      const signInResult = await signIn({
         username: formData.username || formData.email,
         password: formData.password
       })
       
-      router.push('/')
+      console.log('Sign in successful:', signInResult)
+      
+      // Small delay before redirect to ensure session is established
+      setTimeout(() => {
+        router.push('/')
+      }, 500)
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Sign in failed')
     } finally {
@@ -90,12 +97,20 @@ export default function CustomAuthForm() {
       })
       
       // Auto sign in after confirmation
-      await signIn({
+      const signInResult = await signIn({
         username: formData.username,
         password: formData.password
       })
       
-      router.push('/')
+      console.log('Auto sign in after confirmation:', signInResult)
+      
+      // Auto create the synced Supabase user
+      await createUser()
+      
+      // Delay before redirect to ensure session is established
+      setTimeout(() => {
+        router.push('/')
+      }, 1000)
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Confirmation failed')
     } finally {
