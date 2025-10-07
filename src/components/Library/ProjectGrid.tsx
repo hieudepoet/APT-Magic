@@ -3,66 +3,54 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { TabType } from './LibraryProfile';
+import { useProjects } from '@/hooks/useProjects';
 import ProjectModal from './ProjectModal';
+import LoadingSpinner from '@/components/Common/LoadingSpinner';
 
 interface Project {
   id: string;
-  beforeImage: string;
-  afterImage: string;
-  transformType: 'restoration' | 'anime' | 'cyberpunk' | 'viral' | 'id' | 'ultra-hd';
-  createdAt: string;
-  isPosted: boolean;
-  likes?: number;
-  dislikes?: number;
+  title?: string;
+  transform_type: string;
+  before_image_url: string;
+  after_image_url: string;
+  thumbnail_url?: string;
+  status: 'saved' | 'posted';
+  created_at: string;
 }
 
 interface ProjectGridProps {
   activeTab: TabType;
 }
 
-// Mock project data
-const mockProjects: Project[] = [
-  {
-    id: '1',
-    beforeImage: '/api/placeholder/300/300',
-    afterImage: '/api/placeholder/300/300',
-    transformType: 'anime',
-    createdAt: '2024-01-01',
-    isPosted: true,
-    likes: 45,
-    dislikes: 2
-  },
-  {
-    id: '2',
-    beforeImage: '/api/placeholder/300/300',
-    afterImage: '/api/placeholder/300/300',
-    transformType: 'restoration',
-    createdAt: '2024-01-02',
-    isPosted: false
-  },
-  {
-    id: '3',
-    beforeImage: '/api/placeholder/300/300',
-    afterImage: '/api/placeholder/300/300',
-    transformType: 'cyberpunk',
-    createdAt: '2024-01-03',
-    isPosted: true,
-    likes: 78,
-    dislikes: 5
-  },
-];
+
 
 export default function ProjectGrid({ activeTab }: ProjectGridProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const { projects, loading, error } = useProjects(activeTab);
 
-  const filteredProjects = activeTab === 'saved' 
-    ? mockProjects 
-    : mockProjects.filter(project => project.isPosted);
+  if (loading) {
+    return (
+      <div className="flex justify-center py-20">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
-  if (filteredProjects.length === 0) {
+  if (error) {
     return (
       <div className="flex flex-col items-center justify-center py-20">
-        <div className="text-6xl mb-6">📷</div>
+        <p className="text-red-400 mb-4">Error: {error}</p>
+        <button className="px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 transition-all duration-200">
+          Retry
+        </button>
+      </div>
+    );
+  }
+
+  if (projects.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20 pt-10">
+        <div className="text-6xl mb-6">?</div>
         <h3 className="text-2xl font-semibold text-white mb-3">
           {activeTab === 'saved' ? 'No saved projects yet' : 'No posted projects yet'}
         </h3>
@@ -82,34 +70,24 @@ export default function ProjectGrid({ activeTab }: ProjectGridProps) {
   return (
     <>
       <div className="grid grid-cols-3 gap-1 md:gap-2">
-        {filteredProjects.map((project) => (
+        {projects.map((project) => (
           <div
             key={project.id}
             className="relative aspect-square cursor-pointer group overflow-hidden rounded-lg"
             onClick={() => setSelectedProject(project)}
           >
             <Image
-              src={project.afterImage}
+              src={project.after_image_url}
               alt="Project"
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
             
-            {/* Overlay info */}
-            <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              {project.isPosted && project.likes !== undefined && (
-                <div className="flex items-center gap-1 bg-black/70 rounded px-2 py-1">
-                  <Image src="/heart.png" alt="like" width={12} height={12} />
-                  <span className="text-white text-xs">{project.likes}</span>
-                </div>
-              )}
-            </div>
-
             {/* Transform type indicator */}
             <div className="absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="bg-black/70 rounded px-2 py-1">
-                <span className="text-white text-xs capitalize">{project.transformType}</span>
+                <span className="text-white text-xs capitalize">{project.transform_type}</span>
               </div>
             </div>
           </div>

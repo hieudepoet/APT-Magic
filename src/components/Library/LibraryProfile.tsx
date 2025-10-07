@@ -2,24 +2,31 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { useAuth } from '@/hooks/useAuth';
 import ProjectGrid from './ProjectGrid';
+import LoadingSpinner from '@/components/Common/LoadingSpinner';
 
 export type TabType = 'saved' | 'posted';
 
 export default function LibraryProfile() {
   const [activeTab, setActiveTab] = useState<TabType>('saved');
+  const { user, loading } = useAuth();
 
-  // Mock user data
-  const userData = {
-    username: 'john_doe',
-    avatar: '/api/placeholder/150/150',
-    stats: {
-      created: 24,
-      posted: 18,
-      likes: 342,
-      dislikes: 12
-    }
-  };
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <p className="text-gray-400">Please sign in to view your library</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -29,8 +36,8 @@ export default function LibraryProfile() {
           {/* Avatar */}
           <div className="w-32 h-32 rounded-full bg-gray-700 border-2 border-gray-600 overflow-hidden flex-shrink-0">
             <Image
-              src={userData.avatar}
-              alt={userData.username}
+              src={user.avatar_url || '/api/placeholder/150/150'}
+              alt={user.username}
               width={128}
               height={128}
               className="w-full h-full object-cover"
@@ -39,24 +46,24 @@ export default function LibraryProfile() {
 
           {/* User Info */}
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-3xl font-bold text-white mb-4">{userData.username}</h1>
+            <h1 className="text-3xl font-bold text-white mb-4">{user.username}</h1>
             
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
               <div className="text-start">
-                <div className="text-2xl font-bold text-white">{userData.stats.created}</div>
+                <div className="text-2xl font-bold text-white">{user.stats?.total_created || 0}</div>
                 <div className="text-sm text-gray-400">Created</div>
               </div>
               <div className="text-start">
-                <div className="text-2xl font-bold text-white">{userData.stats.posted}</div>
+                <div className="text-2xl font-bold text-white">{user.stats?.total_posted || 0}</div>
                 <div className="text-sm text-gray-400">Posted</div>
               </div>
               <div className="text-start">
-                <div className="text-2xl font-bold text-white">{userData.stats.likes}</div>
+                <div className="text-2xl font-bold text-white">{user.stats?.total_likes_received || 0}</div>
                 <div className="text-sm text-gray-400">Likes</div>
               </div>
               <div className="text-start">
-                <div className="text-2xl font-bold text-white">{userData.stats.dislikes}</div>
+                <div className="text-2xl font-bold text-white">{user.stats?.total_dislikes_received || 0}</div>
                 <div className="text-sm text-gray-400">Dislikes</div>
               </div>
             </div>

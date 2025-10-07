@@ -5,13 +5,13 @@ import Image from 'next/image';
 
 interface Project {
   id: string;
-  beforeImage: string;
-  afterImage: string;
-  transformType: 'restoration' | 'anime' | 'cyberpunk' | 'viral' | 'id' | 'ultra-hd';
-  createdAt: string;
-  isPosted: boolean;
-  likes?: number;
-  dislikes?: number;
+  title?: string;
+  transform_type: string;
+  before_image_url: string;
+  after_image_url: string;
+  thumbnail_url?: string;
+  status: 'saved' | 'posted';
+  created_at: string;
 }
 
 interface ProjectModalProps {
@@ -19,7 +19,7 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
-const transformLabels = {
+const transformLabels: { [key: string]: string } = {
   restoration: 'Photo Restoration',
   anime: 'Anime Style',
   cyberpunk: 'Cyberpunk Style',
@@ -63,14 +63,14 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           <div className="flex items-center justify-between p-4 border-b border-gray-800">
             <div className="flex items-center gap-3">
               <span className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">
-                {transformLabels[project.transformType]}
+                {transformLabels[project.transform_type] || project.transform_type}
               </span>
               <span className="text-sm text-gray-400">
-                Created: {new Date(project.createdAt).toLocaleDateString()}
+                Created: {new Date(project.created_at).toLocaleDateString()}
               </span>
             </div>
             <div className="flex items-center gap-2">
-              {project.isPosted ? (
+              {project.status === 'posted' ? (
                 <span className="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded">Posted</span>
               ) : (
                 <span className="px-2 py-1 bg-gray-500/20 text-gray-400 text-xs rounded">Saved</span>
@@ -85,7 +85,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 Before
               </div>
               <Image
-                src={project.beforeImage}
+                src={project.before_image_url}
                 alt="Before transformation"
                 fill
                 className="object-cover"
@@ -96,7 +96,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 After
               </div>
               <Image
-                src={project.afterImage}
+                src={project.after_image_url}
                 alt="After transformation"
                 fill
                 className="object-cover"
@@ -104,25 +104,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
           </div>
 
-          {/* Stats (if posted) */}
-          {project.isPosted && project.likes !== undefined && (
-            <div className="p-4 border-t border-gray-800">
-              <div className="flex items-center gap-6">
-                <div className="flex items-center gap-2">
-                  <Image src="/heart.png" alt="like" width={16} height={16} />
-                  <span className="text-white font-medium">{project.likes}</span>
-                  <span className="text-gray-400 text-sm">likes</span>
-                </div>
-                {project.dislikes !== undefined && (
-                  <div className="flex items-center gap-2">
-                    <Image src="/dislike.png" alt="dislike" width={16} height={16} />
-                    <span className="text-white font-medium">{project.dislikes}</span>
-                    <span className="text-gray-400 text-sm">dislikes</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
+
 
           {/* Actions */}
           <div className="p-4 border-t border-gray-800">
@@ -130,7 +112,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               <button className="flex-1 px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 transition-all duration-200">
                 Download
               </button>
-              {!project.isPosted && (
+              {project.status === 'saved' && (
                 <button className="flex-1 px-4 py-2 bg-white/20 border border-white/30 rounded-lg text-white hover:bg-white/30 transition-all duration-200">
                   Post to Community
                 </button>
