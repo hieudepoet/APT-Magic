@@ -7,7 +7,7 @@ interface Post {
   avatar: string;
   beforeImage: string;
   afterImage: string;
-  transformType: string;
+  transformType: 'restoration' | 'anime' | 'cyberpunk' | 'viral' | 'id' | 'ultra-hd';
   likes: number;
   dislikes: number;
   timestamp: string;
