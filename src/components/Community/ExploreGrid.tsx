@@ -53,7 +53,8 @@ export default function ExploreGrid({ posts }: ExploreGridProps) {
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
             <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="flex items-center gap-1 bg-black/70 rounded px-2 py-1">
-                <span className="text-white text-xs">👍</span>
+                {/* <span className="text-white text-xs">👍</span> */}
+                <Image src="/heart.png" alt="like" width={12} height={12} />
                 <span className="text-white text-xs">{post.likes}</span>
               </div>
             </div>

@@ -1,6 +1,8 @@
 'use client';
 
 import Image from 'next/image';
+import { useRankings } from '@/hooks/useRankings';
+import LoadingSpinner from '@/components/Common/LoadingSpinner';
 
 interface RankingUser {
   id: string;
@@ -10,19 +12,11 @@ interface RankingUser {
   rank: number;
 }
 
-// Mock ranking data
-const mockRankings: RankingUser[] = [
-  { id: '1', username: 'ai_master', avatar: '/api/placeholder/40/40', totalLikes: 1247, rank: 1 },
-  { id: '2', username: 'photo_wizard', avatar: '/api/placeholder/40/40', totalLikes: 892, rank: 2 },
-  { id: '3', username: 'anime_creator', avatar: '/api/placeholder/40/40', totalLikes: 756, rank: 3 },
-  { id: '4', username: 'cyber_artist', avatar: '/api/placeholder/40/40', totalLikes: 634, rank: 4 },
-  { id: '5', username: 'restoration_pro', avatar: '/api/placeholder/40/40', totalLikes: 521, rank: 5 },
-  { id: '6', username: 'viral_maker', avatar: '/api/placeholder/40/40', totalLikes: 445, rank: 6 },
-  { id: '7', username: 'hd_specialist', avatar: '/api/placeholder/40/40', totalLikes: 389, rank: 7 },
-  { id: '8', username: 'creative_soul', avatar: '/api/placeholder/40/40', totalLikes: 312, rank: 8 },
-];
+
 
 export default function RankingSidebar() {
+  const { rankings, loading, error } = useRankings();
+  
   const getRankIcon = (rank: number) => {
     switch (rank) {
       case 1: return '🥇';
@@ -40,8 +34,22 @@ export default function RankingSidebar() {
       </div>
 
       <div className="flex-1 overflow-y-auto p-4">
-        <div className="space-y-3">
-          {mockRankings.map((user) => (
+        {loading ? (
+          <div className="flex justify-center py-8">
+            <LoadingSpinner />
+          </div>
+        ) : error ? (
+          <div className="text-center py-8">
+            <p className="text-red-400 text-sm mb-2">Error loading rankings</p>
+            <p className="text-gray-500 text-xs">{error}</p>
+          </div>
+        ) : rankings.length === 0 ? (
+          <div className="text-center py-8">
+            <p className="text-gray-400 text-sm">No rankings available</p>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            {rankings.map((user) => (
             <div
               key={user.id}
               className={`flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-white/5 ${
@@ -76,7 +84,8 @@ export default function RankingSidebar() {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        )}
       </div>
 
       <div className="p-4 border-t border-gray-800">

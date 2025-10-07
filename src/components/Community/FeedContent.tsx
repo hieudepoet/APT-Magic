@@ -1,59 +1,51 @@
 'use client';
 
 import { FilterType } from './CommunityFeed';
+import { useCommunityPosts } from '@/hooks/useCommunityPosts';
 import PostCard from './PostCard';
 import ExploreGrid from './ExploreGrid';
 import EmptyFeed from './EmptyFeed';
+import LoadingSpinner from '@/components/Common/LoadingSpinner';
 
 interface FeedContentProps {
   activeFilter: FilterType;
 }
 
-// Mock data - replace with real API calls
-const mockPosts = [
-  {
-    id: '1',
-    author: 'john_doe',
-    avatar: '/api/placeholder/40/40',
-    beforeImage: '/api/placeholder/400/400',
-    afterImage: '/api/placeholder/400/400',
-    transformType: 'restoration' as const,
-    likes: 24,
-    dislikes: 2,
-    timestamp: '2 hours ago',
-    isLiked: false,
-    isDisliked: false,
-  },
-  {
-    id: '2',
-    author: 'anime_lover',
-    avatar: '/api/placeholder/40/40',
-    beforeImage: '/api/placeholder/400/400',
-    afterImage: '/api/placeholder/400/400',
-    transformType: 'anime' as const,
-    likes: 156,
-    dislikes: 8,
-    timestamp: '5 hours ago',
-    isLiked: true,
-    isDisliked: false,
-  },
-];
+
 
 export default function FeedContent({ activeFilter }: FeedContentProps) {
-  // Filter posts based on active filter
-  const filteredPosts = activeFilter === 'feed' 
-    ? mockPosts 
-    : mockPosts.filter(post => post.transformType === activeFilter);
+  const { posts, loading, error } = useCommunityPosts(activeFilter);
 
-  if (activeFilter === 'explore') {
+  if (loading) {
     return (
-      <div className="flex-1 h-full overflow-y-auto [scrollbar-width:none] p-6">
-        <ExploreGrid posts={mockPosts} />
+      <div className="flex-1 h-full overflow-y-auto [scrollbar-width:none] p-6 flex items-center justify-center">
+        <LoadingSpinner />
       </div>
     );
   }
 
-  if (filteredPosts.length === 0) {
+  if (error) {
+    return (
+      <div className="flex-1 h-full overflow-y-auto [scrollbar-width:none] p-6 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-red-400 mb-4">Error: {error}</p>
+          <button className="px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 transition-all duration-200">
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (activeFilter === 'explore') {
+    return (
+      <div className="flex-1 h-full overflow-y-auto [scrollbar-width:none] p-6">
+        <ExploreGrid posts={posts} />
+      </div>
+    );
+  }
+
+  if (posts.length === 0) {
     return (
       <div className="flex-1 h-full overflow-y-auto [scrollbar-width:none] p-6">
         <EmptyFeed filterType={activeFilter} />
@@ -64,7 +56,7 @@ export default function FeedContent({ activeFilter }: FeedContentProps) {
   return (
     <div className="flex-1 h-full overflow-y-auto [scrollbar-width:none] max-w-2xl mx-auto p-6">
       <div className="space-y-8">
-        {filteredPosts.map((post) => (
+        {posts.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
       </div>
