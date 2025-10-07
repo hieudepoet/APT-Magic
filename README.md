@@ -90,29 +90,36 @@ Dự án được tổ chức một cách logic để dễ dàng phát triển v
       /Footer.tsx             # ✅ Footer với team branding
       /Background.tsx         # ✅ 3D particle system
       /UserMenu.tsx           # ✅ Dropdown menu với glassmorphism
+      /LoadingSpinner.tsx     # ✅ Loading spinner
     /Community                # ✅ Components cộng đồng
       /CommunityFeed.tsx      # ✅ Main feed container
       /PostCard.tsx           # ✅ Bài đăng với interactions
       /ExploreGrid.tsx        # ✅ Trending posts grid
       /RankingSidebar.tsx     # ✅ Top creators rankings
+    /Create                   # 🔄 Components tạo và biến đổi ảnh (đang phát triển)
     /Library                  # ✅ Components thư viện
       /LibraryProfile.tsx     # ✅ User profile với stats
       /ProjectGrid.tsx        # ✅ Projects grid layout
       /ProjectModal.tsx       # ✅ Chi tiết project modal
     /UI                       # ✅ UI components
       /Button.tsx             # ✅ Styled buttons
-      /Particles.tsx          # ✅ 3D particle system
       /CustomAuthForm.tsx     # ✅ Custom Cognito auth form
+      /ImageUpload.tsx        # 🔄 Image upload field
+      /Particles.tsx          # ✅ 3D particle system
+      /SpotlightCard.tsx      # ✅ Animated effect Card
   /hooks                      # ✅ Custom React hooks
     /useAuth.ts               # ✅ Authentication với Supabase bridge
     /useProjects.ts           # ✅ Projects data management
     /useCommunityPosts.ts     # ✅ Community posts fetching
     /useRankings.ts           # ✅ Rankings data fetching
+    /useImageUpload.tsx       # 🔄 Image upload field
+    /useUserCreation.ts       # ✅ Insert new user into Supabase
   /lib                        # ✅ Utility functions
     /supabase.ts              # ✅ Supabase client
     /supabase-auth.ts         # ✅ Auth bridge functions
+    /supabase-admin.ts        # ✅ Admin client bypasses RLS
     /s3.ts                    # ✅ AWS S3 utilities
-    /utils.ts                 # ✅ Common utilities
+    /amplify.ts               # ✅ AWS Amplify utilities
   /styles                     # ✅ Styling
     /globals.css              # ✅ Ultra-cold theme với TailwindCSS
 ```
