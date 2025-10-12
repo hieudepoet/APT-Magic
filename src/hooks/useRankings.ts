@@ -1,3 +1,4 @@
+import api from '@/lib/axios';
 import { useState, useEffect } from 'react';
 
 interface RankingUser {
@@ -17,14 +18,13 @@ export function useRankings() {
     try {
       setLoading(true);
       
-      const response = await fetch('/api/community/rankings');
+      const response = await api.get('/community/rankings');
       
-      if (!response.ok) {
+      if (response.data.error) {
         throw new Error('Failed to fetch rankings');
       }
       
-      const data = await response.json();
-      setRankings(data.rankings || []);
+      setRankings(response.data.rankings || []);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch rankings');
     } finally {

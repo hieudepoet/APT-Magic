@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { getCurrentUser } from 'aws-amplify/auth';
+import { useState } from "react";
+import { getCurrentUser } from "aws-amplify/auth";
+import api from "@/lib/axios";
 
 export function useUserCreation() {
   const [creating, setCreating] = useState(false);
@@ -12,26 +13,21 @@ export function useUserCreation() {
     try {
       // Get current user data from Amplify (client-side)
       const currentUser = await getCurrentUser();
-      
-      const response = await fetch('/api/users/create', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          cognitoId: currentUser.userId,
-          email: currentUser.signInDetails?.loginId || '',
-          username: currentUser.username
-        })
+
+      const response = await api.post("/users/create", {
+        cognitoId: currentUser.userId,
+        email: currentUser.signInDetails?.loginId || "",
+        username: currentUser.username,
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to create user');
+      if (response.data.error) {
+        throw new Error(response.data.error || "Failed to create user");
       }
 
-      return data.user;
+      return response.data.user;
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Failed to create user';
+      const errorMessage =
+        err instanceof Error ? err.message : "Failed to create user";
       setError(errorMessage);
       throw new Error(errorMessage);
     } finally {
@@ -42,6 +38,6 @@ export function useUserCreation() {
   return {
     createUser,
     creating,
-    error
+    error,
   };
 }

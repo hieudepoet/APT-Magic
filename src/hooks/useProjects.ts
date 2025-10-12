@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getCurrentUser } from 'aws-amplify/auth';
+import api from '@/lib/axios';
 
 interface Project {
   id: string;
@@ -30,14 +31,13 @@ export function useProjects(status?: 'saved' | 'posted') {
         params.append('status', status);
       }
       
-      const response = await fetch(`/api/users/projects?${params.toString()}`);
-      
-      if (!response.ok) {
+      const response = await api.get(`/api/users/projects?${params.toString()}`);
+
+      if (response.data.error) {
         throw new Error('Failed to fetch projects');
       }
       
-      const data = await response.json();
-      setProjects(data.projects || []);
+      setProjects(response.data.projects || []);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch projects');
     } finally {
