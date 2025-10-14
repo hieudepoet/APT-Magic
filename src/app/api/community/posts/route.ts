@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { NextRequest, NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabase-admin";
 
 interface PostData {
   id: string;
@@ -23,12 +23,13 @@ interface PostData {
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const transformType = searchParams.get('transformType');
+    const transformType = searchParams.get("transformType");
 
     // Build query for posts with user and project data
-    let query = supabase
-      .from('posts')
-      .select(`
+    let query = supabaseAdmin
+      .from("posts")
+      .select(
+        `
         id,
         created_at,
         likes_count,
@@ -45,12 +46,17 @@ export async function GET(request: NextRequest) {
             avatar_url
           )
         )
-      `)
-      .order('created_at', { ascending: false });
+      `
+      )
+      .order("created_at", { ascending: false });
 
     // Filter by transform type if specified
-    if (transformType && transformType !== 'feed' && transformType !== 'explore') {
-      query = query.eq('projects.transform_type', transformType);
+    if (
+      transformType &&
+      transformType !== "feed" &&
+      transformType !== "explore"
+    ) {
+      query = query.eq("projects.transform_type", transformType);
     }
 
     const { data: posts, error } = await query;
@@ -60,27 +66,28 @@ export async function GET(request: NextRequest) {
     }
 
     // Transform data to match frontend interface
-    const transformedPosts = posts?.map((post: PostData) => {
-      const project = post.projects[0];
-      const user = project.users[0];
-      return {
-        id: post.id,
-        author: user.username,
-        avatar: user.avatar_url || '/api/placeholder/40/40',
-        beforeImage: project.before_image_url,
-        afterImage: project.after_image_url,
-        transformType: project.transform_type,
-        likes: post.likes_count,
-        dislikes: post.dislikes_count,
-        timestamp: new Date(post.created_at).toLocaleString(),
-        isLiked: false, // TODO: Check user's reaction
-        isDisliked: false
-      };
-    }) || [];
+    const transformedPosts =
+      posts?.map((post: PostData) => {
+        const project = post.projects[0];
+        const user = project.users[0];
+        return {
+          id: post.id,
+          author: user.username,
+          avatar: user.avatar_url || "/anon-user.png",
+          beforeImage: project.before_image_url,
+          afterImage: project.after_image_url,
+          transformType: project.transform_type,
+          likes: post.likes_count,
+          dislikes: post.dislikes_count,
+          timestamp: new Date(post.created_at).toLocaleString(),
+          isLiked: false, // TODO: Check user's reaction
+          isDisliked: false,
+        };
+      }) || [];
 
     return NextResponse.json({ posts: transformedPosts });
   } catch (error) {
-    console.error('Get community posts error:', error);
-    return NextResponse.json({ error: 'Failed to get posts' }, { status: 500 });
+    console.error("Get community posts error:", error);
+    return NextResponse.json({ error: "Failed to get posts" }, { status: 500 });
   }
 }
