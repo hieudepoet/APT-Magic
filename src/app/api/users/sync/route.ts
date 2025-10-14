@@ -4,7 +4,7 @@ import {
   createSupabaseUser,
   getSupabaseUserByCognitoId,
 } from "@/lib/supabase-auth";
-import { supabaseAdmin } from "@/lib/supabase-admin";
+import supabaseAdmin from "@/lib/supabase-admin";
 
 export async function POST(request: NextRequest) {
   try {

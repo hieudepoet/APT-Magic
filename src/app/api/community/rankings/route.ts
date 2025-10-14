@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabaseAdmin } from "@/lib/supabase-admin";
+import supabaseAdmin from "@/lib/supabase-admin";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RankingItem = any;
