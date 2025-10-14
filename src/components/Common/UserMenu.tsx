@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function UserMenu() {
   const { user, signOut } = useAuth();
@@ -21,10 +22,6 @@ export default function UserMenu() {
   }, []);
 
   if (!user) return null;
-
-  const getInitials = (username: string) => {
-    return username.slice(0, 2).toUpperCase();
-  };
 
   return (
     <>
@@ -47,8 +44,14 @@ export default function UserMenu() {
           className="flex items-center space-x-3 bg-gray-700/20 border border-gray-500 px-4 py-2 rounded-lg hover:bg-gray-800 hover:border-white hover:glow-white transition-all duration-300"
         >
           {/* Avatar */}
-          <div className="w-8 h-8 bg-gradient-to-br from-gray-400 to-gray-600 rounded-full flex items-center justify-center text-white text-sm font-semibold">
-            {getInitials(user.username)}
+          <div className="w-8 h-8 bg-gradient-to-br from-gray-400 to-gray-600 rounded-full relative overflow-hidden flex items-center justify-center">
+            <Image
+              src={user.avatar_url || "/anon-user.png"}
+              alt={`${user.username}'s avatar`}
+              fill
+              className="object-cover object-center"
+              sizes="32px"
+            />
           </div>
 
           {/* Username */}
