@@ -29,7 +29,7 @@ export default function LibraryProfile() {
   }
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen text-white pt-16">
       <div className="max-w-4xl mx-auto p-6">
         {/* Profile Header */}
         <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
