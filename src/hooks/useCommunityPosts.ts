@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FilterType } from '@/components/Community/CommunityFeed';
+import api from '@/lib/axios';
 
 interface Post {
   id: string;
@@ -29,14 +30,14 @@ export function useCommunityPosts(filter: FilterType) {
         params.append('transformType', filter);
       }
       
-      const response = await fetch(`/api/community/posts?${params.toString()}`);
+      const response = await api.get(`/community/posts?${params.toString()}`);
+      console.log('Fetch posts response:', response);
       
-      if (!response.ok) {
+      if (response.data.error) {
         throw new Error('Failed to fetch posts');
       }
       
-      const data = await response.json();
-      setPosts(data.posts || []);
+      setPosts(response.data.posts || []);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch posts');
     } finally {

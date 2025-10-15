@@ -1,3 +1,4 @@
+import api from '@/lib/axios';
 import { useState } from 'react';
 
 interface UploadResult {
@@ -18,21 +19,17 @@ export function useImageUpload() {
 
     try {
       // Get presigned URL
-      const response = await fetch('/api/upload/presigned-url', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fileName: file.name,
-          fileType: file.type,
-          folder,
-        }),
+      const response = await api.post('/upload/presigned-url', {
+        fileName: file.name,
+        fileType: file.type,
+        folder,
       });
 
-      if (!response.ok) {
+      if (response.data.error) {
         throw new Error('Failed to get upload URL');
       }
 
-      const { uploadUrl, fileUrl, key } = await response.json();
+      const { uploadUrl, fileUrl, key } = response.data;
 
       // Upload file to S3
       const uploadResponse = await fetch(uploadUrl, {

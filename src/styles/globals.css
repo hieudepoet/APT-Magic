@@ -5,6 +5,8 @@
   --foreground: #ffffff;
   --accent: #ffffff;
   --accent-muted: #6b7280;
+  --ai-color-1: #fc00ff;
+  --ai-color-2: #7b71fa;
 }
 
 @theme inline {
@@ -91,10 +93,8 @@ body {
 
 /* Glow text effect */
 .glow-text {
-  text-shadow: 
-    0 0 5px rgba(255, 255, 255, 0.5),
-    0 0 10px rgba(255, 255, 255, 0.3),
-    0 0 15px rgba(255, 255, 255, 0.2),
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.3), 0 0 15px rgba(255, 255, 255, 0.2),
     0 0 20px rgba(255, 255, 255, 0.1);
 }
 
@@ -105,16 +105,79 @@ body {
 
 @keyframes pulse-glow {
   from {
-    text-shadow: 
-      0 0 5px rgba(255, 255, 255, 0.5),
-      0 0 10px rgba(255, 255, 255, 0.3),
-      0 0 15px rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+      0 0 10px rgba(255, 255, 255, 0.3), 0 0 15px rgba(255, 255, 255, 0.2);
   }
   to {
-    text-shadow: 
-      0 0 10px rgba(255, 255, 255, 0.8),
-      0 0 20px rgba(255, 255, 255, 0.5),
-      0 0 30px rgba(255, 255, 255, 0.3),
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3),
       0 0 40px rgba(255, 255, 255, 0.1);
   }
+}
+
+/* Color gradient style thường thấy ở web AI --> 2 mã màu dùng chính: ai-1 ai-2 owr treen  */
+
+.bg-gradient {
+  /* Fallback for old browsers */
+  background: var(--ai-color-1);
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    var(--ai-color-1),
+    var(--ai-color-2)
+  );
+
+  /* Modern browsers */
+  background: linear-gradient(to right, var(--ai-color-1), var(--ai-color-2));
+}
+
+.bg-fading-gradient {
+  background: linear-gradient(to right, var(--ai-color-1), var(--ai-color-2));
+
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.text-gradient {
+  /* Fallback for old browsers */
+  background: var(--ai-color-2);
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    var(--ai-color-1),
+    var(--ai-color-2)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Modern browsers */
+  background: linear-gradient(to right, var(--ai-color-1), var(--ai-color-2));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.border-gradient {
+  border: 2px solid;
+  border-image-slice: 1;
+  border-width: 2px;
+  border-image-source: linear-gradient(
+    to right,
+    var(--ai-color-1),
+    var(--ai-color-2)
+  );
+}
+
+.shadow-gradient {
+  box-shadow: 0 4px 15px var(--ai-color-1), 0 4px 20px var(--ai-color-2);
 }
