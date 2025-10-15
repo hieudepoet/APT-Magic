@@ -1,123 +1,167 @@
-import Link from 'next/link';
-import Button from '@/components/UI/Button';
-import SpotlightCard from '@/components/UI/SpotlightCard';
+import Link from "next/link";
+import Button from "@/components/UI/Button";
+import SpotlightCard from "@/components/UI/SpotlightCard";
+import FeaturesSection from "@/components/Create/FeaturesSection";
+import { FaArrowRight, FaPalette } from "react-icons/fa";
+import GradientReactIcon from "@/components/UI/GradientReactIcon";
+import { MdOutlinePalette } from "react-icons/md";
+import GlassBox from "@/components/UI/GlassBox";
+import DirectedTranslate from "@/components/UI/Effect/DirectedTranslate";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="bg-gray-700/20 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-700 glow-white">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white glow-text">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background Gradient */}
+        <div className="absolute inset-0 bg-fading-gradient h-[80vh] z-0"></div>
+        {/* Hoa Tiet */}
+        <div className="absolute inset-0 w-[110%] flex justify-between z-0 pointer-events-none">
+          <Image
+            src="/ui/hoa-tiet/dots.png"
+            alt="Background Pattern"
+            width={200}
+            height={200}
+            className="opacity-10 h-[80vh] w-auto rotate-190"
+          />
+          <Image
+            src="/ui/hoa-tiet/dots.png"
+            alt="Background Pattern"
+            width={500}
+            height={500}
+            className="opacity-10 h-[80vh] w-auto -rotate-10"
+          />
+        </div>
+        {/* Content */}
+        <div className="max-w-7xl mx-auto text-center mt-[3vh] relative z-10">
+          <div className=" p-8 md:p-12">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white ">
               Transform Your Photos with
-              <span className="shimmer pulse-glow block mt-2"> AI Magic</span>
+              <span className="block mt-2"> AI Magic</span>
             </h1>
-            <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
-              From restoring old memories to creating stunning anime and cyberpunk art, 
-              unleash the power of AI to transform your photos into masterpieces.
+            <p className="text-xl text-gray-400 mb-8 mt-3 max-w-3xl mx-auto">
+              From restoring old memories to creating stunning anime and
+              cyberpunk art, unleash the power of AI to transform your photos
+              into masterpieces.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/create">
-                <Button size="lg" className="w-full sm:w-auto hover:cursor-pointer">
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto hover:cursor-pointer bg-nones border border-white !bg-[rgba(255,255,255,0)] border-white text-white hover:!bg-[rgba(0,0,0,0.1)] transition-all duration-200"
+                >
                   Start Creating
                 </Button>
               </Link>
               <Link href="/community">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto hover:cursor-pointer">
-                  Explore Gallery
+                <Button
+                  size="lg"
+                  className="group text-white border-none w-full sm:w-auto hover:cursor-pointer !bg-[rgba(255,255,255,0)] "
+                >
+                  Explore Gallery{" "}
+                  <FaArrowRight className="inline ml-2 text-white group-hover:translate-x-2 duration-200"></FaArrowRight>
                 </Button>
               </Link>
             </div>
           </div>
         </div>
+
+        {/* Art Part */}
+        <div className="relative w-[50vw] h-[50vw] mx-auto  mt-20 z-10">
+          {/* Main */}
+          <GlassBox borderPadding={25} className="w-full h-full mt-5 mx-auto">
+            <Image
+              src="/ui/purple-glasses.jpg"
+              alt="Art"
+              fill
+              className="object-center object-cover rounded-3xl"
+            ></Image>
+          </GlassBox>
+          {/* Image 1 */}
+          <DirectedTranslate
+            xUnit={10}
+            yUnit={-10}
+            step={10}
+            className="absolute -top-40 -right-60 -rotate-30 -z-10"
+          >
+            <GlassBox className="w-[300px] h-[300px]" borderPadding={20}>
+              <Image
+                src="/ui/color-man.jpg"
+                alt="Art"
+                fill
+                className="object-center object-cover rounded-3xl"
+              ></Image>
+            </GlassBox>
+          </DirectedTranslate>
+
+          {/* Image 2 */}
+          <DirectedTranslate
+            xUnit={-10}
+            yUnit={-10}
+            step={10}
+            className="absolute -top-50 -left-80 rotate-15 -z-10"
+          >
+            <GlassBox className=" w-[350px] h-[350px]" borderPadding={20}>
+              <Image
+                src="/ui/anime.jpg"
+                alt="Art"
+                fill
+                className="object-center object-cover rounded-3xl"
+              ></Image>
+            </GlassBox>
+          </DirectedTranslate>
+
+          {/* Image 3 */}
+          <DirectedTranslate
+            xUnit={-5}
+            yUnit={-10}
+            step={20}
+            distance={200}
+            className="absolute bottom-15 -left-80 -rotate-15 -z-10"
+          >
+            <GlassBox className=" w-[350px] h-[350px]" borderPadding={20}>
+              <Image
+                src="/ui/holy-meow.jpg"
+                alt="Art"
+                fill
+                className="object-center object-cover rounded-3xl"
+              ></Image>
+            </GlassBox>
+          </DirectedTranslate>
+
+          {/* Image 4 */}
+          <DirectedTranslate
+            xUnit={5}
+            yUnit={-10}
+            step={20}
+            distance={200}
+            className="absolute bottom-35 -right-80 rotate-20 -z-10"
+          >
+            <GlassBox className=" w-[350px] h-[350px]" borderPadding={20}>
+              <Image
+                src="/ui/old-city.jpg"
+                alt="Art"
+                fill
+                className="object-center object-cover rounded-3xl"
+              ></Image>
+            </GlassBox>
+          </DirectedTranslate>
+        </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Powerful AI Transformations
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Choose from our collection of AI-powered transformation tools
-            </p>
-          </div>
-          
-          {/*line 1*/}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            {/* Restore Feature */}
-            <SpotlightCard className="custom-spotlight-card text-center hover:cursor-pointer" spotlightColor="rgba(255, 255, 255, 0.67)">
-              <div className="w-16 h-16 border-2 border-gray-600 bg-black/40 backdrop-blur-sm mx-auto mb-4 flex items-center justify-center sharp-border hover:border-white hover:glow-white transition-all duration-300">
-                <svg className="w-8 h-8 text-gray-400 hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Photo Restoration</h3>
-              <p className="text-gray-500">Bring old and damaged photos back to life with AI-powered restoration</p>
-            </SpotlightCard>
-
-            {/* Anime Feature */}
-            <SpotlightCard className="custom-spotlight-card text-center hover:cursor-pointer" spotlightColor="rgba(255, 255, 255, 0.67)">
-              <div className="w-16 h-16 border-2 border-gray-600 bg-black/40 backdrop-blur-sm mx-auto mb-4 flex items-center justify-center sharp-border hover:border-white hover:glow-white transition-all duration-300">
-                <svg className="w-8 h-8 text-gray-400 hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Anime Style</h3>
-              <p className="text-gray-500">Transform your photos into beautiful anime-style artwork</p>
-            </SpotlightCard>
-
-            {/* Cyberpunk Feature */}
-            <SpotlightCard className="custom-spotlight-card text-center hover:cursor-pointer" spotlightColor="rgba(255, 255, 255, 0.67)">
-              <div className="w-16 h-16 border-2 border-gray-600 bg-black/40 backdrop-blur-sm mx-auto mb-4 flex items-center justify-center sharp-border hover:border-white hover:glow-white transition-all duration-300">
-                <svg className="w-8 h-8 text-gray-400 hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Cyberpunk Style</h3>
-              <p className="text-gray-500">Add futuristic neon effects and cyberpunk aesthetics</p>
-            </SpotlightCard>
-          </div>
-
-          {/*line 2*/}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Viral Prompt Feature */}
-            <SpotlightCard className="custom-spotlight-card text-center hover:cursor-pointer" spotlightColor="rgba(255, 255, 255, 0.67)">
-              <div className="w-16 h-16 border-2 border-gray-600 bg-black/40 backdrop-blur-sm mx-auto mb-4 flex items-center justify-center sharp-border hover:border-white hover:glow-white transition-all duration-300">
-                <svg className="w-8 h-8 text-gray-400 hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Viral Prompt</h3>
-              <p className="text-gray-500">Hot trend AI transformations with prompts shared widely on Facebook, TikTok</p>
-            </SpotlightCard>
-
-            {/* ID Photo Feature */}
-            <SpotlightCard className="custom-spotlight-card text-center hover:cursor-pointer" spotlightColor="rgba(255, 255, 255, 0.67)">
-              <div className="w-16 h-16 border-2 border-gray-600 bg-black/40 backdrop-blur-sm mx-auto mb-4 flex items-center justify-center sharp-border hover:border-white hover:glow-white transition-all duration-300">
-                <svg className="w-8 h-8 text-gray-400 hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">ID Photo</h3>
-              <p className="text-gray-500">Generate professional ID photos with perfect background and lighting</p>
-            </SpotlightCard>
-
-            {/* Ultra HD Feature */}
-            <SpotlightCard className="custom-spotlight-card text-center hover:cursor-pointer" spotlightColor="rgba(255, 255, 255, 0.67)">
-              <div className="w-16 h-16 border-2 border-gray-600 bg-black/40 backdrop-blur-sm mx-auto mb-4 flex items-center justify-center sharp-border hover:border-white hover:glow-white transition-all duration-300">
-                <div className="text-gray-400 hover:text-white transition-colors font-bold text-2xl">
-                  4K
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Ultra HD</h3>
-              <p className="text-gray-500">Enhance image resolution to ultra-high definition with AI upscaling</p>
-            </SpotlightCard>
-          </div>
-        </div>
-      </section>
+      <div className="text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-white">
+          <span className="text-gradient">Platform</span> Gallery{" "}
+          <GradientReactIcon
+            icon={MdOutlinePalette}
+            size={45}
+            className="inline"
+          />
+        </h2>
+      </div>
+      <FeaturesSection></FeaturesSection>
     </div>
   );
 }

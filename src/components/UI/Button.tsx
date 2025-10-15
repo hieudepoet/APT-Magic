@@ -1,33 +1,38 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: "primary" | "secondary" | "outline" | "none";
+  size?: "sm" | "md" | "lg";
   children: ReactNode;
   isLoading?: boolean;
 }
 
-export default function Button({ 
-  variant = 'primary', 
-  size = 'md', 
-  children, 
+export default function Button({
+  variant = "primary",
+  size = "md",
+  children,
   isLoading = false,
-  className = '',
+  className = "",
   disabled,
-  ...props 
+  ...props
 }: ButtonProps) {
-  const baseClasses = 'font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
-  
+  const baseClasses =
+    "font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed";
+
   const variantClasses = {
-    primary: 'bg-white text-black hover:bg-gray-200 hover:glow-white focus:ring-gray-500 font-semibold',
-    secondary: 'bg-gray-800 border border-gray-600 text-white hover:bg-gray-700 hover:border-gray-400 focus:ring-gray-500',
-    outline: 'border border-gray-500 text-gray-300 hover:bg-gray-900 hover:text-white hover:border-white focus:ring-gray-500'
+    primary:
+      "bg-white text-black hover:bg-gray-200 hover:glow-white focus:ring-gray-500 font-semibold",
+    secondary:
+      "bg-gray-800 border border-gray-600 text-white hover:bg-gray-700 hover:border-gray-400 focus:ring-gray-500",
+    outline:
+      "border border-gray-500 text-gray-300 hover:bg-gray-900 hover:text-white hover:border-white focus:ring-gray-500",
+    none: "",
   };
 
   const sizeClasses = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2 text-base',
-    lg: 'px-6 py-3 text-lg'
+    sm: "px-3 py-1.5 text-sm",
+    md: "px-4 py-2 text-base",
+    lg: "px-6 py-3 text-lg",
   };
 
   return (
