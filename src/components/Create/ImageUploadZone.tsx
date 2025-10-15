@@ -6,7 +6,7 @@ import Image from "next/image";
 import Button from "@/components/UI/Button";
 
 interface ImageUploadZoneProps {
-  onImageSelect: (file: File) => void;
+  onImageSelect: (file: File | null) => void;
   selectedImage?: File | null;
 }
 
@@ -44,7 +44,7 @@ export default function ImageUploadZone({
 
   const clearImage = () => {
     setPreview(null);
-    onImageSelect(null as any);
+    onImageSelect(null);
   };
 
   return (
