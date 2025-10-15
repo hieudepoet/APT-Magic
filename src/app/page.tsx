@@ -151,8 +151,8 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <div className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-white">
+      <div className="flex flex-col items-center m-40">
+        <h2 className="text-4xl md:text-6xl font-bold text-white p-4">
           <span className="text-gradient">Platform</span> Gallery{" "}
           <GradientReactIcon
             icon={MdOutlinePalette}
@@ -160,8 +160,13 @@ export default function Home() {
             className="inline"
           />
         </h2>
+        <p className="text-xl text-center text-gray-400 mb-8 mt-3 max-w-3xl mx-auto pb-4">
+          Start trying out the amazing features and harness the full power of our magical AI ability to create your own Artwork
+        </p>
+
+        <FeaturesSection />
       </div>
-      <FeaturesSection></FeaturesSection>
+
     </div>
   );
 }
