@@ -20,7 +20,7 @@ export default function TransformInterface({
   const [isProcessing, setIsProcessing] = useState(false);
   const [result, setResult] = useState<string | null>(null);
 
-  const handleImageSelect = (file: File) => {
+  const handleImageSelect = (file: File | null) => {
     setSelectedImage(file);
     setResult(null); // Clear previous result
   };
