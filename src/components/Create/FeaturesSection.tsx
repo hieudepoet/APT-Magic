@@ -6,9 +6,6 @@ const FeaturesSection = () => {
   return (
     <section className="sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div>
-          *Cần thêm content vào đây
-        </div>
         {/*line 1*/}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Restore Feature */}
