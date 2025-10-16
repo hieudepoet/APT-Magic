@@ -1,10 +1,12 @@
+"use client"
+
 import Link from "next/link";
 import Button from "@/components/UI/Button";
 import SpotlightCard from "@/components/UI/SpotlightCard";
 import FeaturesSection from "@/components/Create/FeaturesSection";
 import { FaArrowRight, FaPalette } from "react-icons/fa";
 import GradientReactIcon from "@/components/UI/GradientReactIcon";
-import { MdOutlinePalette } from "react-icons/md";
+import { MdOutline3dRotation, MdOutline4gPlusMobiledata, MdOutlineAccessibility, MdOutlineAutoFixHigh, MdOutlinePalette } from "react-icons/md";
 import GlassBox from "@/components/UI/GlassBox";
 import DirectedTranslate from "@/components/UI/Effect/DirectedTranslate";
 import Image from "next/image";
@@ -34,9 +36,9 @@ export default function Home() {
           />
         </div>
         {/* Content */}
-        <div className="max-w-7xl mx-auto text-center mt-[3vh] relative z-10">
+        <div className="max-w-7xl mx-auto text-center mt-[3vh] relative z-100">
           <div className=" p-8 md:p-12">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white ">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
               Transform Your Photos with
               <span className="block mt-2"> AI Magic</span>
             </h1>
@@ -155,9 +157,9 @@ export default function Home() {
         <h2 className="text-4xl md:text-6xl font-bold text-white p-4">
           <span className="text-gradient">Platform</span> Gallery{" "}
           <GradientReactIcon
-            icon={MdOutlinePalette}
-            size={45}
-            className="inline"
+            icon={MdOutlineAutoFixHigh}
+            size={80}
+            className="inline mb-5"
           />
         </h2>
         <p className="text-xl text-center text-gray-400 mb-8 mt-3 max-w-3xl mx-auto pb-4">
