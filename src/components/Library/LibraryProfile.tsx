@@ -36,7 +36,7 @@ export default function LibraryProfile() {
           {/* Avatar */}
           <div className="w-32 h-32 rounded-full bg-gray-700 border-2 border-gray-600 overflow-hidden flex-shrink-0">
             <Image
-              src={user.avatar_url || "/anon-user.png"}
+              src={user.avatar_url || "/assets/anon-user.png"}
               alt={user.username}
               width={128}
               height={128}
