@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 z-50 w-screen duration-300 ${
+      className={`fixed top-0 z-200 w-screen duration-300 ${
         scrolled
           ? "bg-black/96" // when scrolled
           : "" // when at top
@@ -34,7 +34,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
             <img
-              src="/flash-svgrepo-com.svg"
+              src="/assets/flash-svgrepo-com.svg"
               alt="Logo"
               className="w-14 h-14 group-hover:text-gray-300 transition-all duration-300 group-hover:animate-spin"
             />

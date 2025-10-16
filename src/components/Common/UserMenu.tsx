@@ -46,7 +46,7 @@ export default function UserMenu() {
           {/* Avatar */}
           <div className="w-8 h-8 bg-gradient-to-br from-gray-400 to-gray-600 rounded-full relative overflow-hidden flex items-center justify-center">
             <Image
-              src={user.avatar_url || "/anon-user.png"}
+              src={user.avatar_url || "/assets/anon-user.png"}
               alt={`${user.username}'s avatar`}
               fill
               className="object-cover object-center"

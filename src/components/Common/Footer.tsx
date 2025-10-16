@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <img
-                src="/flash-svgrepo-com.svg" // Đường dẫn SVG trong thư mục public, ví dụ: /logo.svg
+                src="/assets/flash-svgrepo-com.svg" // Đường dẫn SVG trong thư mục public, ví dụ: /logo.svg
                 alt="Logo"
                 className="w-14 h-14 group-hover:text-gray-300 transition-all duration-300 group-hover:animate-spin"
               />
@@ -24,20 +24,22 @@ export default function Footer() {
             </p>
             
             {/* Team Info */}
-            <div className="bg-gray-700/20 hover:bg-gray-800 hover:glow-white transition-all duration-300 backdrop-blur-sm rounded-lg p-4 border border-gray-700 sharp-border w-3/4">
-              <h4 className="font-semibold text-white mb-2">Developed by</h4>
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center glow-white">
-                  <img
-                    src="/AIVanguard.png"  
-                    alt="App Icon"
-                    className="w-6 h-6"
-                  />
+            <Link href="/profile/devteam">
+              <div className="bg-gray-700/20 hover:bg-gray-800 hover:glow-white transition-all duration-300 backdrop-blur-sm rounded-lg p-4 border border-gray-700 sharp-border w-3/4">
+                <h4 className="font-semibold text-white mb-2">Developed by</h4>
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center glow-white">
+                    <img
+                      src="/assets/AIVanguard.png"  
+                      alt="App Icon"
+                      className="w-6 h-6"
+                    />
+                  </div>
+                  <span className="text-white font-semibold">AIVanguard Team</span>
                 </div>
-                <span className="text-white font-semibold">AIVanguard Team</span>
+                <p className="text-gray-400 text-sm mt-2">Software and AI/ML Experts Team</p>
               </div>
-              <p className="text-gray-400 text-sm mt-2">Software and AI/ML Experts Team</p>
-            </div>
+            </Link>
           </div>
 
           {/* Features */}

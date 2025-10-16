@@ -126,7 +126,7 @@ export default function PostCard({ post }: PostCardProps) {
             }`}
           >
             {/* <span className="text-lg">👍</span> */}
-            <Image src="/heart.png" alt="like" width={20} height={20} />
+            <Image src="/assets/heart.png" alt="like" width={20} height={20} />
             <span className="font-medium">{likes}</span>
           </button>
           <button
@@ -138,7 +138,7 @@ export default function PostCard({ post }: PostCardProps) {
             }`}
           >
             {/* <span className="text-lg">👎</span> */}
-            <Image src="/heartbreak.png" alt="dislike" width={23} height={23} />
+            <Image src="/assets/heartbreak.png" alt="dislike" width={23} height={23} />
             <span className="font-medium">{dislikes}</span>
           </button>
         </div>

@@ -78,7 +78,7 @@ export default function RankingSidebar() {
                 <p className="font-semibold text-white truncate">{user.username}</p>
                 <div className="flex items-center gap-1">
                   {/* <span className="text-xs">👍</span> */}
-                  <Image src="/heart.png" alt="like" width={18} height={18} />
+                  <Image src="/assets/heart.png" alt="like" width={18} height={18} />
                   <span className="text-sm text-gray-400">{user.totalLikes.toLocaleString()}</span>
                 </div>
               </div>
