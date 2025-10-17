@@ -65,12 +65,13 @@ export default function DevTeam() {
                         onContactClick={() => window.open('https://github.com/mndkhanh', '_blank')}
                     />
                     <ProfileCard
-                        name="hieudepoet"
-                        title="Viet Hieu Dinh"
-                        handle="hieudepoet"
-                        status="FullStack Developer"
+                        name="anonymous"
+                        title="Anonymous user"
+                        handle="anonymous"
+                        status="unknown"
                         contactText="Contact Me"
-                        avatarUrl="/devteam/hieudepoet.png"
+                        avatarUrl="/devteam/anon-user.png"
+                        miniAvatarUrl="/assets/anon-user.png"
                         iconUrl="/assets/iconpattern.png"
                         grainUrl="/assets/grain.webp"
                         showUserInfo={true}
@@ -79,12 +80,13 @@ export default function DevTeam() {
                         onContactClick={() => console.log('Contact clicked')}
                     />
                     <ProfileCard
-                        name="hieudepoet"
-                        title="Viet Hieu Dinh"
-                        handle="hieudepoet"
-                        status="FullStack Developer"
+                        name="anonymous"
+                        title="Anonymous user"
+                        handle="anonymous"
+                        status="unknown"
                         contactText="Contact Me"
-                        avatarUrl="/devteam/hieudepoet.png"
+                        avatarUrl="/devteam/anon-user.png"
+                        miniAvatarUrl="/assets/anon-user.png"
                         iconUrl="/assets/iconpattern.png"
                         grainUrl="/assets/grain.webp"
                         showUserInfo={true}
@@ -93,12 +95,13 @@ export default function DevTeam() {
                         onContactClick={() => console.log('Contact clicked')}
                     />
                     <ProfileCard
-                        name="hieudepoet"
-                        title="Viet Hieu Dinh"
-                        handle="hieudepoet"
-                        status="FullStack Developer"
+                        name="anonymous"
+                        title="Anonymous user"
+                        handle="anonymous"
+                        status="unknown"
                         contactText="Contact Me"
-                        avatarUrl="/devteam/hieudepoet.png"
+                        avatarUrl="/devteam/anon-user.png"
+                        miniAvatarUrl="/assets/anon-user.png"
                         iconUrl="/assets/iconpattern.png"
                         grainUrl="/assets/grain.webp"
                         showUserInfo={true}
