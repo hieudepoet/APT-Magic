@@ -10,6 +10,7 @@ import { MdOutline3dRotation, MdOutline4gPlusMobiledata, MdOutlineAccessibility,
 import GlassBox from "@/components/UI/GlassBox";
 import DirectedTranslate from "@/components/UI/Effect/DirectedTranslate";
 import Image from "next/image";
+import DevTeam from "@/components/AboutUs/DevTeam";
 
 export default function Home() {
   return (
@@ -154,7 +155,7 @@ export default function Home() {
 
       {/* Features Section */}
       <div className="flex flex-col items-center m-40">
-        <h2 className="text-4xl md:text-6xl font-bold text-white p-4">
+        <h2 className="text-4xl md:text-6xl font-bold text-white">
           <span className="text-gradient">Platform</span> Gallery{" "}
           <GradientReactIcon
             icon={MdOutlineAutoFixHigh}
@@ -162,12 +163,15 @@ export default function Home() {
             className="inline mb-5"
           />
         </h2>
-        <p className="text-xl text-center text-gray-400 mb-8 mt-3 max-w-3xl mx-auto pb-4">
+        <p className="text-xl text-center text-gray-400 mb-8 max-w-3xl mx-auto pb-4">
           Start trying out the amazing features and harness the full power of our magical AI ability to create your own Artwork
         </p>
 
         <FeaturesSection />
       </div>
+
+      {/*Dev team in4*/}
+      <DevTeam />
 
     </div>
   );
