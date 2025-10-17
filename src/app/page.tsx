@@ -14,7 +14,7 @@ import DevTeam from "@/components/AboutUs/DevTeam";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen min-w-screen">
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Background Gradient */}
@@ -167,7 +167,11 @@ export default function Home() {
           Start trying out the amazing features and harness the full power of our magical AI ability to create your own Artwork
         </p>
 
-        <FeaturesSection />
+        <div
+          className="mx-10"
+        >
+          <FeaturesSection />
+        </div>
       </div>
 
       {/*Dev team in4*/}
