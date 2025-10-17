@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import PostModal from './PostModal';
+import EmptyFeed from './EmptyFeed';
 
 interface Post {
   id: string;
@@ -27,10 +28,8 @@ export default function ExploreGrid({ posts }: ExploreGridProps) {
 
   if (posts.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-20">
-        <div className="text-6xl mb-4">🔍</div>
-        <h3 className="text-xl font-semibold text-white mb-2">No posts to explore</h3>
-        <p className="text-gray-400">Check back later for amazing transformations!</p>
+      <div className="flex-1 h-full overflow-y-auto [scrollbar-width:none] p-6">
+        <EmptyFeed filterType={"explore"} />
       </div>
     );
   }
