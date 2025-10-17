@@ -24,7 +24,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 z-200 w-screen duration-300 ${
-        scrolled
+        scrolled || isMenuOpen
           ? "bg-black/96" // when scrolled
           : "" // when at top
       }`}
