@@ -27,7 +27,7 @@ export default function RankingSidebar() {
   };
 
   return (
-    <div className="w-80 h-screen border-l border-gray-800 flex flex-col sticky top-0">
+    <div className="w-80 h-full border-l border-gray-800 flex flex-col sticky top-0">
       <div className="p-4 border-b border-gray-800">
         <h2 className="text-xl font-bold text-white mb-2">Top Creators</h2>
         <p className="text-sm text-gray-400">Ranked by total likes received</p>
