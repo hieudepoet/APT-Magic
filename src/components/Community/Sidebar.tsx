@@ -82,7 +82,7 @@ const filterOptions = [
 
 export default function Sidebar({ activeFilter, onFilterChange }: SidebarProps) {
   return (
-    <div className="w-64 h-full border-r border-gray-800 p-4 overflow-y-auto">
+    <div className="w-64 h-full border-r border-gray-800 p-4 overflow-y-auto top-0 pt-0">
       <div className="space-y-2">
         {filterOptions.map((option) => (
           <button
@@ -95,7 +95,11 @@ export default function Sidebar({ activeFilter, onFilterChange }: SidebarProps) 
             }`}
           >
             <div className="text-gray-400 group-hover:text-white transition-colors">{option.icon}</div>
-            <span className="font-medium">{option.label}</span>
+            <span className={
+              option.id === 'explore' 
+              ? "text-xl font-bold"
+              : "font-medium"
+            }>{option.label}</span>
           </button>
         ))}
       </div>

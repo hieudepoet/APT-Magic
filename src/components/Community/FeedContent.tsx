@@ -47,7 +47,7 @@ export default function FeedContent({ activeFilter }: FeedContentProps) {
 
   if (posts.length === 0) {
     return (
-      <div className="flex-1 h-full overflow-y-auto [scrollbar-width:none] p-6">
+      <div className="flex-1 h-full overflow-y-auto [scrollbar-width:none] p-6 border-t border-gray-800">
         <EmptyFeed filterType={activeFilter} />
       </div>
     );

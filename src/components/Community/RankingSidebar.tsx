@@ -66,7 +66,7 @@ export default function RankingSidebar() {
               
               <div className="w-10 h-10 rounded-full bg-gray-700 border border-gray-600 overflow-hidden flex-shrink-0">
                 <Image
-                  src={user.avatar}
+                  src="/assets/anon-user.png"
                   alt={user.username}
                   width={40}
                   height={40}
