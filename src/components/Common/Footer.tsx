@@ -1,3 +1,5 @@
+"use client"
+
 import Link from 'next/link';
 
 export default function Footer() {
@@ -24,7 +26,7 @@ export default function Footer() {
             </p>
             
             {/* Team Info */}
-            <Link href="/profile/devteam">
+            <Link href="/about-us">
               <div className="bg-gray-700/20 hover:bg-gray-800 hover:glow-white transition-all duration-300 backdrop-blur-sm rounded-lg p-4 border border-gray-700 sharp-border w-3/4">
                 <h4 className="font-semibold text-white mb-2">Developed by</h4>
                 <div className="flex items-center space-x-2">
