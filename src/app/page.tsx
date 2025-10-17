@@ -154,13 +154,13 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <div className="flex flex-col items-center m-40">
-        <h2 className="text-4xl md:text-6xl font-bold text-white">
+      <div className="flex flex-col items-center mb-40 mt-40 relative text-center justify-center">
+        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
           <span className="text-gradient">Platform</span> Gallery{" "}
           <GradientReactIcon
             icon={MdOutlineAutoFixHigh}
             size={80}
-            className="inline mb-5"
+            className="hidden md:inline pb-5 mx-auto"
           />
         </h2>
         <p className="text-xl text-center text-gray-400 mb-8 max-w-3xl mx-auto pb-4">
