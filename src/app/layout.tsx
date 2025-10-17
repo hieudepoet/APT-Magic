@@ -38,7 +38,7 @@ export default function RootLayout({
       >
         <AuthProvider>
           <Background className="z-0" />
-          <div className="min-h-screen flex flex-col relative">
+          <div className="min-h-screen flex flex-col relative overflow-x-hidden mx-auto">
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />

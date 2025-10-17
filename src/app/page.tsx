@@ -14,7 +14,7 @@ import DevTeam from "@/components/AboutUs/DevTeam";
 
 export default function Home() {
   return (
-    <div className="min-h-screen min-w-screen">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Background Gradient */}
