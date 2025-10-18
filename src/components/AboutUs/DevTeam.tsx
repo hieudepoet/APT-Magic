@@ -46,7 +46,7 @@ export default function DevTeam() {
                         grainUrl="/assets/grain.webp"
                         showUserInfo={true}
                         enableTilt={true}
-                        enableMobileTilt={true}
+                        enableMobileTilt={false}
                         onContactClick={() => window.open('https://github.com/hieudepoet', '_blank')}
                     />
                     <ProfileCard
@@ -61,7 +61,7 @@ export default function DevTeam() {
                         grainUrl="/assets/grain.webp"
                         showUserInfo={true}
                         enableTilt={true}
-                        enableMobileTilt={true}
+                        enableMobileTilt={false}
                         onContactClick={() => window.open('https://github.com/mndkhanh', '_blank')}
                     />
                     <ProfileCard
@@ -91,7 +91,7 @@ export default function DevTeam() {
                         grainUrl="/assets/grain.webp"
                         showUserInfo={true}
                         enableTilt={true}
-                        enableMobileTilt={true}
+                        enableMobileTilt={false}
                         onContactClick={() => console.log('Contact clicked')}
                     />
                     <ProfileCard
@@ -106,7 +106,7 @@ export default function DevTeam() {
                         grainUrl="/assets/grain.webp"
                         showUserInfo={true}
                         enableTilt={true}
-                        enableMobileTilt={true}
+                        enableMobileTilt={false}
                         onContactClick={() => console.log('Contact clicked')}
                     />
                 </div>
