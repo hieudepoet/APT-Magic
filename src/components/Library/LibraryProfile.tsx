@@ -47,11 +47,11 @@ export default function LibraryProfile() {
           {/* User Info */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-3xl font-bold text-white mb-4">
-              {user.username}
+              @{user.username}
             </h1>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+            <div className="grid grid-cols-4 gap-6">
               <div className="text-start">
                 <div className="text-2xl font-bold text-white">
                   {user.stats?.total_created || 0}
