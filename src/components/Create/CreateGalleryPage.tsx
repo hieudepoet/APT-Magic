@@ -8,7 +8,7 @@ export default function CreateGalleryPage() {
   return (
     <div className="min-h-screen relative overflow-hidden pt-16 text-center">
       {/* Context */}
-      <div className="relative z-10 pt-24 pb-12">
+      <div className="relative z-10 pt-24 pb-12 mx-10">
         <FeaturesSection />
       </div>
     </div>
