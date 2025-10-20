@@ -13,6 +13,9 @@ Toàn bộ kiến trúc Backend và MLOps được xây dựng trên AWS (Built 
 | Development/Preview(Vercel)    | [[Webapp](http://apt-magic.vercel.app/)] |
 | Production (Sẽ ra mắt) | [SẼ RA MẮT]      |
 
+## 👷 Team phát triển
+### Thông tin: [AIVanguard Team](https://apt-magic.vercel.app/about-us)
+
 ## 🚀 Kiến Trúc & DevSecOps (Built on AWS)
 
 ### 1. Kiến trúc Serverless/Hybrid Tinh Gọn
@@ -177,6 +180,9 @@ The entire Backend and MLOps architecture is built on AWS (Built on AWS) using a
 |------------------------|------------------------------------------|
 | Development/Preview(Vercel)    | [[Webapp](http://apt-magic.vercel.app/)]|
 | Production (Coming Soon)| [COMING SOON]     |
+
+## 👷 Development team 
+### Explore us: [AIVanguard Team](https://apt-magic.vercel.app/about-us)
 
 ## 🚀 Architecture & DevSecOps (Built on AWS)
 
