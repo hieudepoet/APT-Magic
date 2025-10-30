@@ -2,6 +2,8 @@
 
 APT Magic là một nền tảng web sáng tạo, cho phép người dùng biến đổi ảnh của họ bằng các công nghệ AI tiên tiến. Từ việc khôi phục những kỷ niệm cũ đến việc tạo ra những tác phẩm nghệ thuật độc đáo theo phong cách anime hay cyberpunk, ứng dụng này mang đến một trải nghiệm sáng tạo và đầy cảm hứng với giao diện hiện đại, thân thiện với người dùng.
 
+**APT Magic được xây dựng với các giải pháp từ AWS (Built on AWS)**
+
 **LƯU Ý QUAN TRỌNG:** README này đang được cập nhật liên tục và phản ánh trạng thái phát triển chưa hoàn thiện của dự án.
 
 Toàn bộ kiến trúc Backend và MLOps được xây dựng trên AWS (Built on AWS) với mô hình Serverless-first để tối ưu hóa chi phí và khả năng mở rộng.
